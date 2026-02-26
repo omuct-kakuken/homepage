@@ -79,6 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. 3D Cube Rotation and Drag Interaction
     const cube = document.querySelector('.cube-wireframe');
+
+    // --- スマホ向けパフォーマンス最適化 ---
+    // 画面幅が768px以下の場合、間隔（0.5px）は維持したまま、外側のレイヤーを隠して全体の厚みを減らす（約15枚に削減）
+    if (window.innerWidth <= 768) {
+        const thicknessLayers = document.querySelectorAll('.logo-layer.thickness');
+        const frontLayer = document.querySelector('.logo-layer:not(.thickness):not(.back)');
+        const backLayer = document.querySelector('.logo-layer.back');
+
+        thicknessLayers.forEach((layer, index) => {
+            // 中央の13枚（インデックス5〜17）のみ残す
+            if (index < 5 || index > 17) {
+                layer.style.display = 'none';
+            }
+        });
+
+        // 前面と背面の位置も、薄くなった厚みに合わせて調整（+3.5px / -3.5px）
+        if (frontLayer) frontLayer.style.transform = 'translateZ(3.5px)';
+        if (backLayer) backLayer.style.transform = 'translateZ(-3.5px)';
+    }
+
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
     let currentRotation = { x: 15, y: 0 }; // Initial angle
