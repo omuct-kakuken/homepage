@@ -135,14 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             autoRotate = true; // Resume rotating
         };
 
-        // Mouse events (Desktop)
+        // Mouse events (Desktop only as requested)
         cube.addEventListener('mousedown', startDrag);
         document.addEventListener('mousemove', onDrag);
         document.addEventListener('mouseup', endDrag);
 
-        // Touch events (Mobile)
-        cube.addEventListener('touchstart', startDrag, { passive: true });
-        document.addEventListener('touchmove', onDrag, { passive: true });
-        document.addEventListener('touchend', endDrag);
+        // Touch drag is disabled to prevent scroll interference on mobile
     }
 });
