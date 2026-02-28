@@ -161,5 +161,33 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', endDrag);
 
         // Touch drag is disabled to prevent scroll interference on mobile
-    }
-});
+        }
+
+        // Gallery thumbnail switcher
+        const galleryMain = document.getElementById('gallery-main-img');
+        const thumbButtons = document.querySelectorAll('.thumb-button');
+
+        if (galleryMain && thumbButtons.length) {
+            thumbButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.getAttribute('data-src');
+                    if (!src) return;
+                    galleryMain.src = src;
+                    thumbButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+
+                // keyboard accessibility (Enter / Space)
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
+
+            // set initial active thumb
+            thumbButtons[0].classList.add('active');
+        }
+
+    });
