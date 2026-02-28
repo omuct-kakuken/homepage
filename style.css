@@ -1054,3 +1054,12 @@ img {
         padding: 20px;
     }
 }
+
+/* === Mobile Performance Optimization === */
+@media (max-width: 768px) {
+
+    /* ロゴのレイヤー数を半分に間引いて描画負荷を軽減 */
+    .logo-layer.thickness:nth-child(even) {
+        display: none;
+    }
+}
