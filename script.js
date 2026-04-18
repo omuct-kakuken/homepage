@@ -24,6 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScrollY;
     });
 
+    // 1.5 Mobile hamburger menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (mobileMenuBtn && siteNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            siteNav.classList.toggle('open');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = siteNav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        // Close menu when a nav link is clicked
+        const mobileNavLinks = siteNav.querySelectorAll('.nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                siteNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     // 2. Active Navigation Link Update
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
