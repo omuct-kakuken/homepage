@@ -1132,3 +1132,33 @@ img {
         display: none;
     }
 }
+
+/* === Instagram Feed Section === */
+.instagram-section {
+    margin-top: 48px;
+}
+
+.instagram-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+}
+
+.instagram-icon {
+    flex-shrink: 0;
+    color: #c13584;
+}
+
+behold-widget {
+    display: block;
+    width: 100%;
+}
+
+.ml-sm {
+    margin-left: 12px;
+}
