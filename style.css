@@ -1166,3 +1166,198 @@ behold-widget {
 .ml-sm {
     margin-left: 12px;
 }
+
+/* === Renewal Notification === */
+.renewal-toast {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-main);
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: var(--transition-standard);
+    animation: slideInBottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 380px;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toast-badge {
+    background-color: var(--color-r-z);
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.toast-text {
+    line-height: 1.4;
+}
+
+.toast-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.toast-close-btn:hover {
+    color: var(--color-text-main);
+}
+
+.renewal-toast:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes slideInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.renewal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.renewal-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.renewal-modal-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.renewal-modal.show .renewal-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    margin-bottom: 24px;
+}
+
+.modal-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    line-height: 1.4;
+    background: linear-gradient(90deg, var(--color-r-z), var(--color-r-x));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.modal-body {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.modal-body p {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.renewal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.renewal-close-btn:hover {
+    color: var(--color-text-main);
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}

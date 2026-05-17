@@ -211,6 +211,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // set initial active thumb
             thumbButtons[0].classList.add('active');
+    }
+
+    // 5. HP Renewal Notification
+    const toast = document.getElementById('hp-renewal-toast');
+    const toastTrigger = document.getElementById('hp-toast-trigger');
+    const toastClose = document.getElementById('hp-toast-close');
+    const modal = document.getElementById('hp-renewal-modal');
+    const closeBtn = document.getElementById('hp-renewal-close');
+    const okBtn = document.getElementById('hp-renewal-ok');
+
+    if (toast && modal && closeBtn) {
+        // Open modal when toast content is clicked
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+                modal.classList.add('show');
+                toast.style.display = 'none';
+            });
         }
 
-    });
+        // Close toast permanently (or until refresh)
+        if (toastClose) {
+            toastClose.addEventListener('click', (e) => {
+                e.stopPropagation(); // prevent modal opening if clicked on container
+                toast.style.display = 'none';
+            });
+        }
+
+        const closeModal = () => {
+            modal.classList.remove('show');
+            // If they read it and closed the modal, we don't show the toast again
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        if (okBtn) okBtn.addEventListener('click', closeModal);
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+});
