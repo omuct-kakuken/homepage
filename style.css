@@ -1313,6 +1313,7 @@ behold-widget {
     line-height: 1.4;
     background: linear-gradient(90deg, var(--color-r-z), var(--color-r-x));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
